@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        min-height: 100%;
+        background-color: #FAFAFA;
+    }
+
+    .head {
+        width: 100%;
+        height: 180vh;
+        background-color: #222222;
+
+    }
+
+    .navbar {
+        height: 30px;
+        display: flex;
+        justify-content: flex-end;
+        background-color: #222222;
+    }
+
+    .navbar-item {
+        margin-right: 3rem;
+        margin-top: 8px;
+        font-size: 1.5rem;
+        font-family: 'Roboto Condensed', sans-serif;
+    }
+
+    .navbar-item a {
+        text-decoration: none;
+        color: white;
+    }
+
+    .bg-img {
+        position: absolute;
+        margin-top: 8%;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        text-align: center;
+        opacity: 80%;
+        width: 45%;
+        height: 100%;
+        background-image: url("./img/pizza.svg");
+        background-size: cover;
+
+    }
+
+    .title {
+        height: 140vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #222222;
+        overflow: hidden;
+
+    }
+
+    .title h1 {
+        font-size: 11rem;
+        font-family: 'Anton', sans-serif;
+        color: white;
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        max-height: 70%;
+        width: 100%;
+        letter-spacing: 5px;
+        white-space: nowrap;
+    }
+
+    .thanks {
+        height: 15vh;
+        margin-top: 50vh;
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .thanks-text {
+        display: flex;
+        height: fit-content;
+        margin-left: 20%;
+    }
+
+    .thanks-text p {
+        font-size: 1.5rem;
+        font-family: 'Space Mono', monospace;
+    }
+
+    .add p {
+        overflow: hidden;
+        /* Ensures the content is not revealed until the animation */
+        border-right: 2px solid black;
+        white-space: nowrap;
+        /* Keeps the content on a single line */
+        margin: 0 auto;
+        /* Gives that scrolling effect as the typing happens */
+        letter-spacing: .15em;
+        /* Adjust as needed */
+        animation:
+            typing 2s steps(40, end),
+            blink .6s step-end infinite;
+    }
+
+    @keyframes typing {
+        from {
+            width: 0;
+        }
+
+        to {
+            width: 100%;
+        }
+
+    }
+
+    @keyframes blink {
+        0% {
+            border-color: black;
+        }
+
+        40% {
+            border-color: black;
+        }
+
+        60% {
+            border-color: transparent;
+        }
+
+        100% {
+            border-color: transparent;
+        }
+    }
+
+    .section {
+        margin-top: 35vh;
+        height: 180vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .title-section {
+        width: fit-content;
+        margin-left: 10%;
+        height: fit-content;
+        line-height: 11rem;
+        padding-bottom: 40px;
+        cursor: default;
+    }
+
+    .title-section h1 {
+        font-family: 'Anton', sans-serif;
+        color: #000;
+        font-size: 12rem;
+        font-weight: 400;
+        width: fit-content;
+
+    }
+
+    .title-section:hover>#middle {
+        animation: colors 1s infinite;
+    }
+
+    @keyframes colors {
+        0% {
+            color: #7AFFB6;
+        }
+
+        20% {
+            color: #E86558;
+        }
+
+        40% {
+            color: #6E75FF;
+        }
+
+        60% {
+            color: #EBCB4D;
+        }
+
+        80% {
+            color: #FEADFF;
+        }
+
+        100% {
+            color: #7AFFB6;
+        }
+    }
+
+    #font-outline-black {
+        -webkit-text-fill-color: transparent;
+        -webkit-text-stroke: 2px black;
+    }
+
+    .about-text {
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-top: 5rem;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .about-text p {
+        font-family: 'Space Mono', monospace;
+        color: black;
+        font-size: 1.2rem;
+        width: 50%;
+    }
+
+    .about-img {
+        background-color: rgb(39, 39, 39);
+        width: 500px;
+        height: 600px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .about-img img {
+        width: 450px;
+        height: 450px;
+    }
+
+    .word-decoration {
+        color: #f78185;
+    }
+
+    .spez {
+        margin-top: 20vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .spez-title {
+        font-family: 'Anton', sans-serif;
+        font-size: 2rem;
+        font-weight: 100;
+        margin-bottom: 10vh;
+    }
+
+    .marquee {
+        margin: 0 auto;
+        width: 60%;
+        height: 100px;
+        white-space: nowrap;
+        overflow: hidden;
+        box-sizing: border-box;
+        position: relative;
+    }
+
+    .marquee:before,
+    .marquee:after {
+        position: absolute;
+        top: 0;
+        width: 50px;
+        height: 30px;
+        content: "";
+        z-index: 1;
+    }
+
+    .marquee:before {
+        left: 0;
+    }
+
+    .marquee:after {
+        right: 0;
+    }
+
+    .marquee__content {
+        width: 300%;
+        display: flex;
+        line-height: 30px;
+        animation: marquee 20s linear infinite forwards;
+    }
+
+    .marquee__content:hover {
+        animation-play-state: paused;
+    }
+
+    .list-inline {
+        display: flex;
+        justify-content: space-around;
+        width: 33.33%;
+        /* reset list */
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-family: 'Roboto Condensed', sans-serif;
+        font-size: 2rem;
+        color: #f78185;
+    }
+
+    @keyframes marquee {
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(-66.6%);
+        }
+    }
+    .projects-content {
+        margin-top: 20vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contact-grid {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 30vh;
+        margin-top: 30vh;
+    }
+
+    .contact-text {
+        font-family: 'Space Mono', monospace;
+        color: black;
+        font-size: 2rem;
+    }
+
+    .contact-buttons  {
+        margin-top: 10vh;
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Space Mono', monospace;
+        gap: 2rem;
+    }
+
+    .contact-buttons img {
+        width: 50px;
+        height: 50px;
+    }
+    .insta img {
+        width: 45px;
+        height: 40px;
+        margin-bottom: 7px;
+        margin-top: 5px;
+    }
+    .fb  {
+        margin-left: -18px;
+    }
+    .insta, .mail, .fb {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        height: 100%;
+    }
+    #insta-text, #mail-text, #fb-text{
+        visibility: hidden;
+        opacity: 0;
+        transition: .5s linear;
+    }
+    .mail:hover #mail-text{
+        visibility: visible;
+        opacity: 1;
+    }
+    .insta:hover #insta-text{
+        visibility: visible;
+        opacity: 1;
+    }
+    .fb:hover #fb-text{
+        visibility: visible;
+        opacity: 1;
+    }
+
+    @media screen and (min-width: 1334px) and (max-width: 1628px){
+        .bg-img {
+            width: 60%;
+        }
+        .title h1 {
+            font-size: 9rem;
+        }
+        .about-img {
+            width: 300px;
+            height: 400px;
+        }
+        .about-img img {
+            width: 200px;
+            height: 200px;
+        }
+        .title-section {
+            line-height: 8rem;
+        }
+        .title-section h1{
+            font-size: 9rem;
+        }
+        .contact-text {
+            font-size: 1.5rem;
+        }
+    }
+    @media screen and (min-width: 1000px) and (max-width: 1333px){
+        .bg-img {
+            width: 80%;
+            height: 100%;
+        }
+        .title h1 {
+            font-size: 8rem;
+        }
+        .about-img {
+            width: 300px;
+            height: 400px;
+        }
+        .about-img img {
+            width: 200px;
+            height: 200px;
+        }
+        .title-section {
+            line-height: 7.2rem;
+        }
+        .title-section h1{
+            font-size: 8rem;
+        }
+        .contact-text {
+            font-size: 1.5rem;
+        }
+        #sentence {
+            font-size: 1rem;
+        }
+        .about-text p{
+            font-size: 0.9rem;
+        }
+        .spez-title {
+            font-size: 1.5rem;
+        }
+        .list-inline {
+            font-size: 1rem;
+        }
+    }
+    @media screen and (min-width: 700px) and (max-width: 999px){
+        .bg-img {
+            width: 95%;
+            height: 100%;
+        }
+        .title h1 {
+            font-size: 5rem;
+        }
+        .about-img {
+            width: 300px;
+            height: 400px;
+        }
+        .about-img img {
+            width: 200px;
+            height: 200px;
+        }
+        .title-section {
+            line-height: 5rem;
+        }
+        .title-section h1{
+            font-size: 5rem;
+        }
+        .contact-text {
+            font-size: 1.2rem;
+        }
+        #sentence {
+            font-size: 1rem;
+        }
+        .about-text {
+            flex-direction: column;
+            gap: 5vh;
+        }
+        .about-text p{
+            font-size: 0.9rem;
+            width: 95%;
+        }
+        .spez-title {
+            font-size: 1.5rem;
+        }
+        .list-inline {
+            font-size: 1rem;
+        }
+        .navbar-item {
+            font-size: 0.8rem;
+        }
+        .mail img, .fb img{
+            width: 30px;
+        }
+        .insta img {
+            width: 30px;
+            height: 25px;
+        }
+    }
+    @media screen and (min-width: 550px) and (max-width: 699px){
+        .bg-img {
+        position: absolute;
+        margin-top: 30%;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        text-align: center;
+        opacity: 80%;
+        width: 95%;
+        height: 80%;
+        background-image: url("./img/pizza.svg");
+        background-size: cover;
+        }
+        .title h1 {
+            font-size: 4rem;
+        }
+        .about-img {
+            width: 200px;
+            height: 300px;
+        }
+        .about-img img {
+            width: 150px;
+            height: 150px;
+        }
+        .title-section {
+            line-height: 4rem;
+        }
+        .title-section h1{
+            font-size: 4rem;
+        }
+        .contact-text {
+            font-size: 1.2rem;
+        }
+
+        #sentence {
+            font-size: 1rem;
+        }
+        .about-text {
+            flex-direction: column;
+            gap: 5vh;
+        }
+        .about-text p{
+            font-size: 0.9rem;
+            width: 95%;
+        }
+        .spez-title {
+            font-size: 1rem;
+        }
+        .list-inline {
+            font-size: 0.5rem;
+        }
+        .navbar-item {
+            font-size: 0.5rem;
+        }
+        .mail img, .fb img{
+            width: 30px;
+        }
+        .insta img {
+            width: 30px;
+            height: 25px;
+        }
+
+        .section {
+            margin-top: 80vh;
+        }
+        .thanks {
+            margin-top: 140vh;
+        }
+
+    }
+    @media screen and (min-width: 355px) and (max-width: 549px){
+        .bg-img {
+        position: absolute;
+        margin-top: 20%;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        text-align: center;
+        opacity: 80%;
+        width: 95%;
+        height: 50%;
+        background-image: url("./img/pizza.svg");
+        background-size: cover;
+        }
+        .title h1 {
+            font-size: 4rem;
+        }
+        .about-img {
+            width: 200px;
+            height: 200px;
+        }
+        .about-img img {
+            width: 100px;
+            height: 100px;
+        }
+        .title-section {
+            line-height: 4rem;
+        }
+        .title-section h1{
+            font-size: 4rem;
+        }
+        .contact-text {
+            font-size: 0.8rem;
+        }
+
+        #sentence {
+            font-size: 0.5rem;
+        }
+        .about-text {
+            flex-direction: column;
+            gap: 5vh;
+        }
+        .about-text p{
+            font-size: 0.7rem;
+            width: 95%;
+        }
+        .spez-title {
+            font-size: 1rem;
+        }
+        .list-inline {
+            font-size: 0.5rem;
+        }
+        .navbar-item {
+            font-size: 0.5rem;
+        }
+        .mail img, .fb img{
+            width: 20px;
+        }
+        .insta img {
+            width: 15px;
+            height: 15px;
+        }
+        .head {
+            height: 80vh;
+        }
+        .title {
+            height: 80vh;
+        }
+        .section {
+            margin-top: 30vh;
+        }
+        .thanks {
+            margin-top: 50vh;
+        }
+        .contact-buttons {
+            justify-content: space-around;
+            align-items: center;
+        }
+        .contact-buttons p {
+            font-size: 0.5rem;
+        }
+        .fb {
+            margin-left: 0;
+        }
+
+    }
+
+</style>
+
+<body>
+    <div class="head">
+        <div class="navbar">
+            <div class="navbar-item">
+                <a href="">about</a>
+            </div>
+            <div class="navbar-item">
+                <a href="">projects</a>
+            </div>
+            <div class="navbar-item">
+                <a href="">contact</a>
+            </div>
+        </div>
+        <div class="bg-img"></div>
+        <div class="title">
+            <h1 class="right-direction">Digital Designer Digital Designer Digital Designer Digital Designer</h1>
+            <h1 class="left-direction">Designer Digital Designer Digital Designer Digital Designer Digital </h1>
+        </div>
+    </div>
+    <div class="thanks">
+        <div class="thanks-text">
+            <p id="sentence">thanks for scrolling...</p>
+        </div>
+    </div>
+    <div class="section">
+        <div class="title-section">
+            <h1 id="font-outline-black">about</h1>
+            <h1 id="middle">about</h1>
+            <h1 id="font-outline-black">about</h1>
+        </div>
+        <div class="about-text">
+            <p>Hi!<br>My name is <span class="word-decoration">Thomas Tikovits</span> and I am a graphic designer, UX/UI
+                designer &amp; front-end web developer from Austria. I&#x27;m currently in my bachelor studies in
+                business informatics at the Vienna University of Economics and Business.</p>
+            <div class="about-img">
+                <img src="./img/pc-nobg-small.gif" alt="Pc">
+            </div>
+        </div>
+        <div class="spez">
+            <div class="spez-title">
+                <h2>Spezialisation</h2>
+            </div>
+            <div class="marquee">
+                <div class="marquee__content">
+                    <ul class="list-inline">
+                        <li>Adobe Creative Cloud</li>
+                        <li>Shopify</li>
+                        <li>Vue.js Framework</li>
+                        <li>Webflow</li>
+                    </ul>
+                    <ul class="list-inline">
+                        <li>Adobe Creative Cloud</li>
+                        <li>Shopify</li>
+                        <li>Vue.js Framework</li>
+                        <li>Webflow</li>
+                    </ul>
+                    <ul class="list-inline">
+                        <li>Adobe Creative Cloud</li>
+                        <li>Shopify</li>
+                        <li>Vue.js Framework</li>
+                        <li>Webflow</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="title-section" style="line-height: 13rem;">
+            <h1 id="font-outline-black">projects</h1>
+            <h1 id="middle">projects</h1>
+            <h1 id="font-outline-black">projects</h1>
+        </div>
+        <div class="projects-content">
+            <p style="font-family: 'Space Mono', monospace;">Comming soon...</p>
+        </div>
+    </div>
+    <div class="section">
+        <div class="title-section">
+            <h1 id="font-outline-black">contact</h1>
+            <h1 id="middle">contact</h1>
+            <h1 id="font-outline-black">contact</h1>
+        </div>
+        <div class="contact">
+        <div class="contact-grid">
+            <div class="contact-text">
+                <p class="grid-item" id="loop">Let's start a project together</p>
+            </div>
+            <div class="contact-buttons">
+                <div class="mail">
+                    <a href="mailto:thomas.tikovits@gmail.com"><img src="./img/mail.svg" alt="mail"></a>
+                    <p id="mail-text">E-Mail</p>
+                </div>
+                <div class="insta">
+                    <a href="https://www.instagram.com/thomastikovits/" target="_blank"><img src="./img/insta.svg" alt="insta"></a>
+                    <p id="insta-text">Instagram</p>
+                </div>
+                <div class="fb">
+                    <a href="https://www.facebook.com/thomas.tikovits.37" target="_blank"><img src="./img/fb.svg" alt="fb"></a>
+                    <p id="fb-text">Facebook</p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
